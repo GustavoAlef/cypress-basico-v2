@@ -135,7 +135,7 @@ describe("Central de Atendimento ao Cliente TAT", () => {
     cy.contains("Talking About Testing").should("be.visible");
   });
 
-  it.only("preenche os campos obrigatorios e envia o formulario usando cyClock e cyTick", () => {
+  it("preenche os campos obrigatorios e envia o formulario usando cyClock e cyTick", () => {
     const longTest = "Cubilia lobortis dolor ut himenaeos ut est arcu ";
 
     cy.clock();
