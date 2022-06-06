@@ -134,4 +134,21 @@ describe("Central de Atendimento ao Cliente TAT", () => {
     cy.get("#privacy a").invoke("removeAttr", "target").click();
     cy.contains("Talking About Testing").should("be.visible");
   });
+
+  it.only("preenche os campos obrigatorios e envia o formulario usando cyClock e cyTick", () => {
+    const longTest = "Cubilia lobortis dolor ut himenaeos ut est arcu ";
+
+    cy.clock();
+
+    cy.get("#firstName").type("gustavo");
+    cy.get("#lastName").type("alef");
+    cy.get("#email").type("gusta@email.com");
+    cy.get("#open-text-area").type(longTest, { delay: 0 }); //<-- como se fosse um ctrl+v
+    cy.contains("button", "Enviar").click();
+
+    cy.get(".success").should("be.visible");
+
+    cy.tick(3000);
+    cy.get(".success").should("not.be.visible");
+  });
 });
